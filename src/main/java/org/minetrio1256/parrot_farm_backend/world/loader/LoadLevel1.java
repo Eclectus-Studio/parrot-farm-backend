@@ -34,11 +34,11 @@ public class LoadLevel1 {
                 JsonObject soils = jsonObject.getAsJsonObject("soils");
                 System.out.println("Found soils");
                 for (int i = 0; i < 2; i++) {
-                    Soil soil = soilsList.getSoil(i);
+                    Soil soil = SoilsList.getSoil(i);
                     System.out.println("In load soil loop");
                     String soilName = soil.getName();
                     if (soils.has(soilName)) {
-                        System.out.println("found grass");
+                        System.out.println("found a valid soil");
                         JsonObject soilType = soils.getAsJsonObject(soilName);
                         Soil currentSoil = new Soil(soilName);
                         for (String xKey : soilType.keySet()) {

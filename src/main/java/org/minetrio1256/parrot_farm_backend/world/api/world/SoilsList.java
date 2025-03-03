@@ -5,10 +5,10 @@ import org.minetrio1256.parrot_farm_backend.world.api.Soil;
 import java.util.HashMap;
 
 public class SoilsList {
-    public HashMap<Integer, Soil> soils = new HashMap<>();
-    public int currentid = -1;
+    public static HashMap<Integer, Soil> soils = new HashMap<>();
+    public static int currentid = -1;
 
-    public void registerSoil(Soil soil, String name) {
+    public static void registerSoil(Soil soil, String name) {
         currentid++;
         Soil newSoil = soil;
         newSoil.setName(name);
@@ -16,19 +16,19 @@ public class SoilsList {
         System.out.println("Added "+ soil.getName());
     }
 
-    public Soil getSoil(int i) {
+    public static Soil getSoil(int i) {
         return soils.get(i);
     }
 
-    public HashMap<Integer, Soil> getSoils() {
+    public static HashMap<Integer, Soil> getSoils() {
         return soils;
     }
 
-    public int getLength(){
+    public static int getLength(){
         return currentid + 1;
     }
 
-    public String getName(int index){
+    public static String getName(int index){
         return soils.get(index).getName();
     }
 }

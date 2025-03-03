@@ -3,7 +3,7 @@ package org.minetrio1256.parrot_farm_backend.world.api;
 import com.google.gson.JsonObject;
 
 public class Soil {
-    private String name;  // Name of the soil type
+    private String name = "";  // Name of the soil type
 
     // Constructor to initialize the soil with a name
     public Soil(String name) {

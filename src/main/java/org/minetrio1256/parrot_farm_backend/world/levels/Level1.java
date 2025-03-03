@@ -6,7 +6,7 @@ import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
 import java.util.HashMap;
 
 public class Level1 {
-    public final HashMap<Coordinate, Soil> Level1Map = new HashMap<>();
+    public static final HashMap<Coordinate, Soil> Level1Map = new HashMap<>();
 
     public Level1(){
 

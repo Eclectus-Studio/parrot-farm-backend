@@ -13,9 +13,8 @@ import java.util.HashMap;
 @RequestMapping("/api/world")
 public class GetWorld {
 
-    @GetMapping("/get")
+    @GetMapping("/get/level1")
     public HashMap<Coordinate, Soil> getData() {
-        Level1 level1 = new Level1();
-        return level1.Level1Map;
+        return Level1.Level1Map;
     }
 }

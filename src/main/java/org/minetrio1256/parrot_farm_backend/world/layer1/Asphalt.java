@@ -1,16 +1,16 @@
 package org.minetrio1256.parrot_farm_backend.world.layer1;
 
 import com.google.gson.JsonElement;
-import org.minetrio1256.parrot_farm_backend.world.api.Soil;
 import com.google.gson.JsonObject;
+import org.minetrio1256.parrot_farm_backend.world.api.Soil;
 
-public class Grass extends Soil {
+public class Asphalt extends Soil {
     private boolean isHydrated;  // Hydration status of the soil
     private JsonObject nbt;
 
     // Constructor with name initialization
-    public Grass() {
-        super("Grass");  // Set name to "Grass"
+    public Asphalt() {
+        super("Asphalt");
         this.isHydrated = false;  // Default hydration status
     }
 

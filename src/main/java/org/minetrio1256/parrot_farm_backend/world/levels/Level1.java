@@ -16,7 +16,7 @@ public class Level1 {
         return Level1Map;
     }
 
-    public void setSoilAt(Coordinate coordinate, Soil soil){
+    public static void setSoilAt(Coordinate coordinate, Soil soil){
         Level1Map.put(coordinate, soil);
     }
 

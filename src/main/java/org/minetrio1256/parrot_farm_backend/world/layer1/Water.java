@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 
 public class Water extends Soil {
     private boolean isHydrated;  // Hydration status of the water soil (always true for water)
+    private JsonObject nbt;
 
     // Constructor with name initialization
     public Water() {

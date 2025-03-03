@@ -16,7 +16,6 @@ import java.io.IOException;
 public class LoadLevel1 {
 
     public void loadLevel1() {
-        SoilsList soilsList = new SoilsList();
         Gson gson = new Gson();
         String filePath = "./world/level1.json";
 
@@ -49,9 +48,8 @@ public class LoadLevel1 {
                                 JsonElement nbt = soilData.get("nbt");
                                 currentSoil.applyNBTData(nbt.getAsJsonObject());
                                 Coordinate coords = new Coordinate(x,y);
-                                Level1 level1 = new Level1();
                                 System.out.println("added "+ currentSoil.getName()+" at "+ coords.getX()+","+coords.getY());
-                                level1.setSoilAt(coords,currentSoil);
+                                Level1.setSoilAt(coords,currentSoil);
 
                             } catch (NumberFormatException e) {
                                 System.err.println("Invalid x value: " + xKey);

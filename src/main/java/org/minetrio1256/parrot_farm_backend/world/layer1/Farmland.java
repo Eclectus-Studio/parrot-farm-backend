@@ -1,17 +1,19 @@
 package org.minetrio1256.parrot_farm_backend.world.layer1;
 
 import com.google.gson.JsonElement;
-import org.minetrio1256.parrot_farm_backend.world.api.Soil;
 import com.google.gson.JsonObject;
+import org.minetrio1256.parrot_farm_backend.world.api.Soil;
 
-public class Grass extends Soil {
+public class Farmland extends Soil {
     private boolean isHydrated;  // Hydration status of the soil
+    private boolean isFertilized;
     private JsonObject nbt;
 
     // Constructor with name initialization
-    public Grass() {
-        super("Grass");  // Set name to "Grass"
+    public Farmland() {
+        super("Farmland");  // Set name to "Farmland"
         this.isHydrated = false;  // Default hydration status
+        this.isFertilized = false;
     }
 
     // Implement the applyNBTData method to handle hydration and other NBT data
@@ -20,6 +22,9 @@ public class Grass extends Soil {
         nbt = nbtData;
         if (nbtData.has("hydration")) {
             this.isHydrated = nbtData.get("hydration").getAsBoolean();
+        }
+        if(nbtData.has("fertilized")) {
+            this.isFertilized = nbtData.get("fertilized").getAsBoolean();
         }
     }
 

@@ -1,5 +1,6 @@
 package org.minetrio1256.parrot_farm_backend;
 
+import org.minetrio1256.parrot_farm_backend.console.ConsoleCommandListener;
 import org.minetrio1256.parrot_farm_backend.filesystem.CopyGameFiles;
 import org.minetrio1256.parrot_farm_backend.world.api.world.SoilsList;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Grass;
@@ -7,6 +8,8 @@ import org.minetrio1256.parrot_farm_backend.world.layer1.Water;
 import org.minetrio1256.parrot_farm_backend.world.loader.LoadLevel1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Scanner;
 
 @SpringBootApplication
 public class ParrotFarmBackendApplication {
@@ -36,5 +39,11 @@ public class ParrotFarmBackendApplication {
 
 		// Start the Spring Boot application
 		SpringApplication.run(ParrotFarmBackendApplication.class, args);
+
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("You can now enter commands via /(command) (args)");
+		ConsoleCommandListener listener = new ConsoleCommandListener();
+		listener.startListening();
+
 	}
 }

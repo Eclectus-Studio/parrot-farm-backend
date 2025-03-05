@@ -1,6 +1,8 @@
 package org.minetrio1256.parrot_farm_backend;
 
 import org.minetrio1256.parrot_farm_backend.console.ConsoleCommandListener;
+import org.minetrio1256.parrot_farm_backend.console.RegisterCommands;
+import org.minetrio1256.parrot_farm_backend.console.commands.ExitCommand;
 import org.minetrio1256.parrot_farm_backend.filesystem.CopyGameFiles;
 import org.minetrio1256.parrot_farm_backend.world.api.world.SoilsList;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Grass;
@@ -15,6 +17,12 @@ import java.util.Scanner;
 public class ParrotFarmBackendApplication {
 
 	public static void main(String[] args) {
+		//Register Commands Variables
+		ExitCommand exitCommand = new ExitCommand();
+
+		//Register The Command
+		RegisterCommands.registerCommand(exitCommand);
+
 		// Copy the game files first
 		CopyGameFiles.copyResourceFolder("world", "world");
 
@@ -44,6 +52,5 @@ public class ParrotFarmBackendApplication {
 		System.out.println("You can now enter commands via /(command) (args)");
 		ConsoleCommandListener listener = new ConsoleCommandListener();
 		listener.startListening();
-
 	}
 }

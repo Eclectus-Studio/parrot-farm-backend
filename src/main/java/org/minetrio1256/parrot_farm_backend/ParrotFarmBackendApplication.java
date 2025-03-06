@@ -4,7 +4,6 @@ import org.minetrio1256.parrot_farm_backend.console.ConsoleCommandListener;
 import org.minetrio1256.parrot_farm_backend.console.RegisterCommands;
 import org.minetrio1256.parrot_farm_backend.console.commands.ExitCommand;
 import org.minetrio1256.parrot_farm_backend.filesystem.CopyGameFiles;
-import org.minetrio1256.parrot_farm_backend.world.api.Object;
 import org.minetrio1256.parrot_farm_backend.world.api.world.ObjectList;
 import org.minetrio1256.parrot_farm_backend.world.api.world.SoilsList;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Grass;
@@ -12,6 +11,7 @@ import org.minetrio1256.parrot_farm_backend.world.layer1.Water;
 import org.minetrio1256.parrot_farm_backend.world.layer2.Wheat;
 import org.minetrio1256.parrot_farm_backend.world.layer2.WheatSeed;
 import org.minetrio1256.parrot_farm_backend.world.loader.LoadLevel1;
+import org.minetrio1256.parrot_farm_backend.world.ticker.Ticker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -57,5 +57,9 @@ public class ParrotFarmBackendApplication {
 		System.out.println("You can now enter commands via /(command) (args)");
 		ConsoleCommandListener listener = new ConsoleCommandListener();
 		listener.startListening();
+
+		//Start ticker
+		Ticker ticker = new Ticker();
+		ticker.startTicker();
 	}
 }

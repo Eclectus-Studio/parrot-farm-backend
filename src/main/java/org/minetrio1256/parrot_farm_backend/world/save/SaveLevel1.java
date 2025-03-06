@@ -13,14 +13,14 @@ import java.io.IOException;
 
 public class SaveLevel1 {
 
-    public void saveLevel1(Level1 level1) {
+    public static void saveLevel1() {
         Gson gson = new Gson();
         String filePath = "./world/level1.json";
         JsonObject jsonObject = new JsonObject();
         JsonObject soilsObject = new JsonObject();
 
-        for (Coordinate coord : level1.getLevel1Map().keySet()) {
-            Soil soil = level1.getLevel1Map().get(coord);
+        for (Coordinate coord : Level1.getLevel1Map().keySet()) {
+            Soil soil = Level1.getLevel1Map().get(coord);
             String soilName = soil.getName();
 
             JsonObject soilType = soilsObject.has(soilName) ? soilsObject.getAsJsonObject(soilName) : new JsonObject();

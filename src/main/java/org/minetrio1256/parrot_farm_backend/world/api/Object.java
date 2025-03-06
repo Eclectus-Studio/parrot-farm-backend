@@ -1,25 +1,25 @@
 package org.minetrio1256.parrot_farm_backend.world.api;
 
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
 
 public abstract class Object {
     private String name;  // Name of the object
     private int width;    // Width in terms of tiles
     private int height;   // Height in terms of tiles
-    private int x;        // X-coordinate of the object's position (top-left corner)
-    private int y;        // Y-coordinate of the object's position (top-left corner)
+    private JsonObject nbt;
+    private Coordinate coordinate;
 
     // Constructor with name, width, height, and position
-    public Object(String name, int width, int height, int x, int y) {
+    public Object(String name, int width, int height) {
         this.name = name;
         this.width = width;
         this.height = height;
-        this.x = x;
-        this.y = y;
     }
 
     // Getter methods
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
@@ -31,25 +31,16 @@ public abstract class Object {
         return height;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
     // Abstract method to apply NBT data, each object will implement this
     public abstract void applyNBTData(JsonObject nbtData);
 
-    // Method to check if the object fits within the given bounds of the map
-    public boolean fitsInBounds(int mapWidth, int mapHeight) {
-        return (x + width <= mapWidth) && (y + height <= mapHeight);
+    public abstract void tick();
+
+    public JsonElement getNBTData(){
+        return nbt;
     }
 
-    // Override toString to print out the details of the object
-    @Override
-    public String toString() {
-        return String.format("%s (Position: [%d, %d], Size: %dx%d)", name, x, y, width, height);
-    }
+    public abstract void setCoordinate(Coordinate newCoords);
+
+    public abstract Coordinate getCoordinate();
 }

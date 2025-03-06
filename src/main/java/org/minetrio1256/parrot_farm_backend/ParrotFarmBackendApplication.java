@@ -4,9 +4,13 @@ import org.minetrio1256.parrot_farm_backend.console.ConsoleCommandListener;
 import org.minetrio1256.parrot_farm_backend.console.RegisterCommands;
 import org.minetrio1256.parrot_farm_backend.console.commands.ExitCommand;
 import org.minetrio1256.parrot_farm_backend.filesystem.CopyGameFiles;
+import org.minetrio1256.parrot_farm_backend.world.api.Object;
+import org.minetrio1256.parrot_farm_backend.world.api.world.ObjectList;
 import org.minetrio1256.parrot_farm_backend.world.api.world.SoilsList;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Grass;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Water;
+import org.minetrio1256.parrot_farm_backend.world.layer2.Wheat;
+import org.minetrio1256.parrot_farm_backend.world.layer2.WheatSeed;
 import org.minetrio1256.parrot_farm_backend.world.loader.LoadLevel1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,11 +21,8 @@ import java.util.Scanner;
 public class ParrotFarmBackendApplication {
 
 	public static void main(String[] args) {
-		//Register Commands Variables
-		ExitCommand exitCommand = new ExitCommand();
-
 		//Register The Command
-		RegisterCommands.registerCommand(exitCommand);
+		RegisterCommands.registerCommand(new ExitCommand());
 
 		// Copy the game files first
 		CopyGameFiles.copyResourceFolder("world", "world");
@@ -30,16 +31,20 @@ public class ParrotFarmBackendApplication {
 		Grass grass = new Grass();
 		Water water = new Water();
 
-		// Create SoilsList (consider using LinkedHashMap if order matters)
+		// Create SoilsList
 		SoilsList soilsList = new SoilsList();
+
+		//Register Object Variable
+		Wheat wheat = new Wheat();
+		WheatSeed wheatSeed = new WheatSeed();
+
+		//Register the Objects
+		ObjectList.registerObject(wheat, wheat.getName());
+		ObjectList.registerObject(wheatSeed, wheatSeed.getName());
 
 		// Register soils
 		soilsList.registerSoil(grass, grass.getName());
 		soilsList.registerSoil(water, water.getName());
-
-		// Ensure soils were correctly registered
-		System.out.println("Soil at index 0: " + soilsList.soils.get(0));  // If using HashMap, this might not be reliable
-		System.out.println("Total number of soils: " + soilsList.getLength());
 
 		// Load level data from JSON or other source
 		LoadLevel1 loadLevel1 = new LoadLevel1();

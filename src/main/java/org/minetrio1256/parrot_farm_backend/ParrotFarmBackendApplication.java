@@ -11,6 +11,7 @@ import org.minetrio1256.parrot_farm_backend.world.layer1.Water;
 import org.minetrio1256.parrot_farm_backend.world.layer2.Wheat;
 import org.minetrio1256.parrot_farm_backend.world.layer2.WheatSeed;
 import org.minetrio1256.parrot_farm_backend.world.loader.LoadLevel1;
+import org.minetrio1256.parrot_farm_backend.world.loader.LoadLevel2;
 import org.minetrio1256.parrot_farm_backend.world.ticker.Ticker;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -48,7 +49,10 @@ public class ParrotFarmBackendApplication {
 
 		// Load level data from JSON or other source
 		LoadLevel1 loadLevel1 = new LoadLevel1();
-		loadLevel1.loadLevel1();  // Ensure this is done after the soils are registered
+		loadLevel1.loadLevel1();
+
+		LoadLevel2 loadLevel2 = new LoadLevel2();
+		loadLevel2.loadLevel2();
 
 		// Start the Spring Boot application
 		SpringApplication.run(ParrotFarmBackendApplication.class, args);

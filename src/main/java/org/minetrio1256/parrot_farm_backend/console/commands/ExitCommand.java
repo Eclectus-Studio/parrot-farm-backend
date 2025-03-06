@@ -2,6 +2,7 @@ package org.minetrio1256.parrot_farm_backend.console.commands;
 
 import org.minetrio1256.parrot_farm_backend.console.Command;
 import org.minetrio1256.parrot_farm_backend.world.save.SaveLevel1;
+import org.minetrio1256.parrot_farm_backend.world.save.SaveLevel2;
 import org.minetrio1256.parrot_farm_backend.world.ticker.Ticker;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ExitCommand extends Command {
         System.out.println("in exit command");
         Ticker.stopTicker();
         SaveLevel1.saveLevel1();
+        SaveLevel2.saveLevel2();
         System.exit(1);
     }
 

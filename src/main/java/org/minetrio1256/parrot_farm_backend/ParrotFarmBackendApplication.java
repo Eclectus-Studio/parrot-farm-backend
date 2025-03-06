@@ -33,9 +33,6 @@ public class ParrotFarmBackendApplication {
 		Grass grass = new Grass();
 		Water water = new Water();
 
-		// Create SoilsList
-		SoilsList soilsList = new SoilsList();
-
 		//Register Object Variable
 		Wheat wheat = new Wheat();
 		WheatSeed wheatSeed = new WheatSeed();
@@ -50,8 +47,8 @@ public class ParrotFarmBackendApplication {
 
 
 		// Register soils
-		soilsList.registerSoil(grass, grass.getName());
-		soilsList.registerSoil(water, water.getName());
+		SoilsList.registerSoil(grass, grass.getName());
+		SoilsList.registerSoil(water, water.getName());
 
 		// Load level data from JSON or other source
 		LoadLevel1 loadLevel1 = new LoadLevel1();

@@ -8,6 +8,7 @@ import org.minetrio1256.parrot_farm_backend.world.api.world.ObjectList;
 import org.minetrio1256.parrot_farm_backend.world.api.world.SoilsList;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Grass;
 import org.minetrio1256.parrot_farm_backend.world.layer1.Water;
+import org.minetrio1256.parrot_farm_backend.world.layer2.Silo;
 import org.minetrio1256.parrot_farm_backend.world.layer2.Wheat;
 import org.minetrio1256.parrot_farm_backend.world.layer2.WheatSeed;
 import org.minetrio1256.parrot_farm_backend.world.loader.LoadLevel1;
@@ -42,6 +43,11 @@ public class ParrotFarmBackendApplication {
 		//Register the Objects
 		ObjectList.registerObject(wheat, wheat.getName());
 		ObjectList.registerObject(wheatSeed, wheatSeed.getName());
+		ObjectList.registerObject(new Silo(), new Silo().getName());
+		ObjectList.registerObject(new Silo.Silo2(), new Silo.Silo2().getName());
+		ObjectList.registerObject(new Silo.Silo3(), new Silo.Silo3().getName());
+		ObjectList.registerObject(new Silo.Silo4(), new Silo.Silo4().getName());
+
 
 		// Register soils
 		soilsList.registerSoil(grass, grass.getName());

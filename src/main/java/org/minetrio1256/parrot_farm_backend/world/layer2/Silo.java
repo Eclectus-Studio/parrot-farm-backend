@@ -87,7 +87,7 @@ public class Silo extends Object {
         return inventory.getCurrentItemAmount();
     }
 
-    public class Silo2 extends Object{
+    public static class Silo2 extends Object{
         private Coordinate coordinate;
 
         public Silo2() {
@@ -112,7 +112,7 @@ public class Silo extends Object {
             return coordinate;
         }
     }
-    public class Silo3 extends Object{
+    public static class Silo3 extends Object{
         private Coordinate coordinate;
 
         public Silo3() {
@@ -137,7 +137,7 @@ public class Silo extends Object {
             return coordinate;
         }
     }
-    public class Silo4 extends Object{
+    public static class Silo4 extends Object{
         private Coordinate coordinate;
 
         public Silo4() {

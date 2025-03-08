@@ -2,6 +2,7 @@ package org.minetrio1256.parrot_farm_backend.items.inventory;
 
 import org.minetrio1256.parrot_farm_backend.items.Item;
 import org.minetrio1256.parrot_farm_backend.items.ItemStack;
+import org.minetrio1256.parrot_farm_backend.items.custom.Empty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class Inventory {
 
     public Inventory(int maxAmountOfItems){
         this.maxAmountOfItems = maxAmountOfItems;
+        this.items = new ItemStack(new Empty(), 1);
     }
 
     public int getCurrentItemAmount() {
@@ -47,6 +49,9 @@ public class Inventory {
         } else if(items.getItem() == item){
             int newAmount = currentItemAmount + amount;
             currentItemAmount = newAmount;
+            return true;
+        } else if (items.getItem().equals(new Empty())) {
+            items = itemStack;
             return true;
         } else {
             return false;

@@ -33,4 +33,9 @@ public class ItemStack {
         int total = amount + i;
         amount = total;
     }
+
+    public void setItemStack(ItemStack itemStack){
+        setItem(itemStack.getItem());
+        setAmount(itemStack.getAmount());
+    }
 }

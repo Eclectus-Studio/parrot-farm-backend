@@ -5,7 +5,7 @@ import com.google.gson.JsonObject;
 import org.minetrio1256.parrot_farm_backend.world.api.Object;
 import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
 
-public class Wheat extends Object {
+public class WheatObject extends Object {
     private String name;        // Name of the object
     private int width;          // Width in terms of tiles
     private int height;         // Height in terms of tiles
@@ -13,11 +13,11 @@ public class Wheat extends Object {
     private Coordinate coordinate;
 
     // Constructor with name, width, height, and position
-    public Wheat() {
-        super("wheat", 1,1);
+    public WheatObject() {
+        super("WheatObject", 1,1);
         this.height = 1;
         this.width = 1;
-        this.name = "wheat";
+        this.name = "WheatObject";
     }
 
     // Getter methods

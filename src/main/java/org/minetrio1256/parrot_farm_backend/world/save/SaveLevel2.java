@@ -26,8 +26,6 @@ public class SaveLevel2 {
             JsonObject objectData = new JsonObject();
 
             objectData.addProperty("y", coord.getY());
-            objectData.addProperty("width", object.getWidth());
-            objectData.addProperty("height", object.getHeight());
             JsonElement nbt = object.getNBTData();
             objectData.add("nbt", nbt);
             objectType.add(String.valueOf(coord.getX()), objectData);

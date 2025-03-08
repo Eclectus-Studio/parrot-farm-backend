@@ -32,7 +32,8 @@ public class LoadLevel1 {
             if (jsonObject.has("soils")) {
                 JsonObject soils = jsonObject.getAsJsonObject("soils");
                 System.out.println("Found soils");
-                for (int i = 0; i < 2; i++) {
+                int loops = SoilsList.getLength();
+                for (int i = 0; i < loops; i++) {
                     Soil soil = SoilsList.getSoil(i);
                     System.out.println("In load soil loop");
                     String soilName = soil.getName();

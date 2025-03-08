@@ -1,8 +1,12 @@
 package org.minetrio1256.parrot_farm_backend.world.layer2;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonSyntaxException;
 import org.minetrio1256.parrot_farm_backend.items.Item;
+import org.minetrio1256.parrot_farm_backend.items.ItemStack;
+import org.minetrio1256.parrot_farm_backend.items.RegisterItem;
 import org.minetrio1256.parrot_farm_backend.items.inventory.Inventory;
 import org.minetrio1256.parrot_farm_backend.world.api.Object;
 import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
@@ -21,7 +25,7 @@ public class Silo extends Object {
         super("silo", 2,2);
         this.height = 1;
         this.width = 1;
-        this.name = "wheat";
+        this.name = "silo";
         this.maxInventoryCapacity = 400;
     }
 
@@ -41,16 +45,35 @@ public class Silo extends Object {
     @Override
     public void applyNBTData(JsonObject nbtData) {
         nbt = nbtData;
+        Item item = null;
+        int newAmount = 0;
+        if (nbtData.has("item")) {
+            String itemName = nbtData.get("item").getAsString();
+            int loop = RegisterItem.getLength();
+            for (int i = 0; i < loop; i++) {
+                if (itemName.equals(RegisterItem.getItem(i).getName())){
+                    item = RegisterItem.getItem(i);
+                }
+            }
+        }
+        if(nbt.has("amount")){
+            newAmount = nbtData.get("amount").getAsInt();
+        }
+        if(!(item == null)){
+            ItemStack itemStack = new ItemStack(item, newAmount);
+        }
     }
 
     @Override
     public void tick(){
-
     }
 
     @Override
     public JsonElement getNBTData(){
-        return nbt;
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("item", this.inventory.getItems().getItem().getName());
+        jsonObject.addProperty("amount", this.inventory.getItems().getAmount());
+        return jsonObject;
     }
 
     @Override

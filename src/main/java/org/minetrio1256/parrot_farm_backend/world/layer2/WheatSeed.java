@@ -16,10 +16,10 @@ public class WheatSeed extends Object {
 
     // Constructor with name, width, height, and position
     public WheatSeed() {
-        super("wheat-seed", 1,1);
+        super("WheatObject-seed", 1,1);
         this.height = 1;
         this.width = 1;
-        this.name = "wheat";
+        this.name = "WheatObject";
     }
 
     // Getter methods
@@ -48,13 +48,15 @@ public class WheatSeed extends Object {
         if(!isGrowthFinished()){
             addGrowth();
         } else {
-            Level2.setObjectAt(coordinate, new Wheat());
+            Level2.setObjectAt(coordinate, new WheatObject());
         }
     }
 
     @Override
     public JsonElement getNBTData(){
-        return nbt;
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("growth", growth);
+        return jsonObject;
     }
 
     private boolean isGrowthFinished() {

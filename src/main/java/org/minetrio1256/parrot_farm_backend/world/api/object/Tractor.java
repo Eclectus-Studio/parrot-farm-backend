@@ -4,7 +4,7 @@ import org.minetrio1256.parrot_farm_backend.world.api.Object;
 import com.google.gson.JsonObject;
 import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
 
-public class Tractor extends Object {
+public abstract class Tractor extends Object {
     private int speed;  // Speed of the tractor
     private boolean isOperational;  // Whether the tractor is operational or not
     private String name;  // Name of the object
@@ -12,12 +12,14 @@ public class Tractor extends Object {
     private int height;   // Height in terms of tiles
     private JsonObject nbt;
     private Coordinate coordinate;
+    private int fuelLevel;
 
     // Constructor for Tractor (1x2 tiles)
-    public Tractor() {
-        super("Tractor", 1, 2);  // Tractor occupies 1x2 tiles
-        this.speed = 6;  // Default speed
-        this.isOperational = true;  // Tractor is operational by default
+    public Tractor(String name, int width, int height, int speed, boolean isOperational, int fuelLevel) {
+        super(name, width, height);  // Tractor occupies 1x2 tiles
+        this.speed = speed;  // Default speed
+        this.isOperational = isOperational;
+        this.fuelLevel = fuelLevel;
     }
 
     // Apply NBT data to the Tractor object
@@ -50,5 +52,10 @@ public class Tractor extends Object {
 
     public boolean isOperational() {
         return isOperational;
+    }
+
+    public void removeFuel(){
+        int i = fuelLevel - 1;
+        fuelLevel = 1;
     }
 }

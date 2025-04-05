@@ -1,27 +1,35 @@
 package org.minetrio1256.parrot_farm_backend.world.api;
 
-import org.minetrio1256.parrot_farm_backend.world.api.Object;
+import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
+
+import java.util.UUID;
 
 public class Player {
     private String name;
-    private int x, y;             // Position on the map (tile coordinates)
+    private Coordinate coords;             // Position on the map (tile coordinates)
     private int health;           // Health of the player (optional)
     private int speed;            // Speed of the player (tiles per second)
     private String currentAction; // Current action (planting, harvesting, etc.)
     private Farm farm;            // Reference to the shared farm (holds coins and farm data)
+    private UUID uuid;            // User Unique Id
 
     // Constructor to initialize the player
-    public Player(String name, int x, int y, int health, int speed, Farm farm) {
+    public Player(String name, int x, int y, int health, int speed, Farm farm, UUID uuid) {
         this.name = name;
-        this.x = x;
-        this.y = y;
+        this.coords.setX(x);
+        this.coords.setY(y);
         this.health = health;
         this.speed = speed;
         this.farm = farm;
         this.currentAction = "Idle"; // Default action
+        this.uuid = uuid;
     }
 
     // Getters and setters
+    public UUID getUuid(){
+        return uuid;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,19 +39,23 @@ public class Player {
     }
 
     public int getX() {
-        return x;
+        return coords.getX();
     }
 
     public void setX(int x) {
-        this.x = x;
+        this.coords.setX(x);
     }
 
     public int getY() {
-        return y;
+        return coords.getY();
     }
 
     public void setY(int y) {
-        this.y = y;
+        this.coords.setY(y);
+    }
+
+    public Coordinate getCoordinate(){
+        return coords;
     }
 
     public int getHealth() {
@@ -76,13 +88,6 @@ public class Player {
 
     public void setFarm(Farm farm) {
         this.farm = farm;
-    }
-
-    // Method to move the player based on their speed
-    public void move(int dx, int dy) {
-        this.x += dx * speed;
-        this.y += dy * speed;
-        System.out.println(name + " moved to position (" + x + ", " + y + ")");
     }
 
     // Method to interact with the farm

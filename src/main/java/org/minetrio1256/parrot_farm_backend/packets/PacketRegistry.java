@@ -1,14 +1,12 @@
 package org.minetrio1256.parrot_farm_backend.packets;
 
-import com.google.gson.JsonObject;
 
-public class PacketRegistry extends Packet {
-    public PacketRegistry(JsonObject info) {
-        super(info);
-    }
+import java.util.HashMap;
 
-    @Override
-    public void run() {
+public class PacketRegistry  {
+    private static HashMap<String, Packet> packets = new HashMap<>();
 
+    public static void addPacket(String id, Packet packet){
+        packets.put(id,packet);
     }
 }

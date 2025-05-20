@@ -1,10 +1,9 @@
 package org.minetrio1256.parrot_farm_backend.world.api.object;
 
-import org.minetrio1256.parrot_farm_backend.world.api.Object;
 import com.google.gson.JsonObject;
 import org.minetrio1256.parrot_farm_backend.world.api.world.Coordinate;
 
-public abstract class Tractor extends Vehicle {
+public class Vehicle {
     private int speed;  // Speed of the tractor
     private boolean isOperational;  // Whether the tractor is operational or not
     private String name;  // Name of the object
@@ -15,37 +14,32 @@ public abstract class Tractor extends Vehicle {
     private int maxFuel;
     private int fuelLevel;
 
-    // Constructor for Tractor (1x2 tiles)
-    public Tractor(boolean isOperational, int maxFuel) {
-        super("tractor", 1, 2, 8, isOperational, maxFuel);  // Tractor occupies 1x2 tiles
+    // Constructor for Vehicle
+    public Vehicle(String name, int width, int height, int speed, boolean isOperational, int maxFuel) {
         this.speed = speed;  // Default speed
         this.isOperational = isOperational;
         this.fuelLevel = fuelLevel;
-        this.height = 2;
-        this.width = 1;
-        this.name = "tractor";
+        this.width = width;
+        this.name = name;
+        this.height = height;
         this.maxFuel = maxFuel;
     }
 
     // Apply NBT data to the Tractor object
-    @Override
     public void applyNBTData(JsonObject nbtData) {
         if (nbtData.has("operational")) {
             this.isOperational = nbtData.get("operational").getAsBoolean();
         }
     }
 
-    @Override
     public void tick() {
 
     }
 
-    @Override
     public void setCoordinate(Coordinate newCoords) {
         coordinate = newCoords;
     }
 
-    @Override
     public Coordinate getCoordinate() {
         return coordinate;
     }
@@ -62,5 +56,9 @@ public abstract class Tractor extends Vehicle {
     public void removeFuel(){
         int i = fuelLevel - 1;
         fuelLevel = 1;
+    }
+
+    public String getName() {
+        return name;
     }
 }

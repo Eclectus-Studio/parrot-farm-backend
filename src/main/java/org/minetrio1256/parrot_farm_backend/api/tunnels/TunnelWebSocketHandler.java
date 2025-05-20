@@ -49,8 +49,12 @@ public class TunnelWebSocketHandler extends TextWebSocketHandler {
             if(jsonObject.has("packet-type") && jsonObject.get("packet-type").getAsString().equals("auth")){
                 String gameToken = jsonObject.get("token").getAsString();
                 if(Tokens.isValidToken(gameToken)){
-                    startTunnel(session);
+                    UUID uuid = Tokens.getUUIDfromToken(gameToken);
+                    session.getAttributes().put("uuid", uuid);
+                    Tokens.removeToken(gameToken);
+                    Tokens.removeUUID(uuid);
                     approvedId.add(session.getId());
+                    startTunnel(session);
                 }
             } else {
                 session.close(CloseStatus.POLICY_VIOLATION);

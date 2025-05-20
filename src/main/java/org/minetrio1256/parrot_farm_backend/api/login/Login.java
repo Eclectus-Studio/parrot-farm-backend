@@ -14,6 +14,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -60,7 +61,8 @@ public class Login {
 
             // Generate and return a random string
             String randomString = generateRandomString(32);
-            Tokens.addToken(randomString);
+            UUID accountUUID = UUID.fromString(uuid);
+            Tokens.addToken(randomString, accountUUID);
 
             // Make sure the response contains randomString as expected by the client
             Map<String, String> response = new HashMap<>();
